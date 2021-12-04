@@ -7,10 +7,12 @@ from timeloop import Timeloop
 from gateway_client import get_gateway_cilent, send_status_event, send_android_device_event
 from udp_listener import listen_sensor_data
 
+try:
 
-
-client = get_gateway_cilent('gateway_config.yml')
-client.connect()
+    client = get_gateway_cilent('gateway_config.yml')
+    client.connect()
+except Exception as e:
+    print("Error: ",e)
 time.sleep(2)
 tl = Timeloop()
 

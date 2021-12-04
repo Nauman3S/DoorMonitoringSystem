@@ -1,0 +1,13 @@
+# File gateway_config.yml
+identity:
+    orgId: 65cjsf
+    typeId: iot
+    deviceId: iot-2
+auth:
+    token: your_auth_token_here
+options:
+    domain: internetofthings.ibmcloud.com
+    logLevel: debug
+    mqtt:
+        port: 8883
+        transport: tcp
