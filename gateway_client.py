@@ -3,7 +3,7 @@ import time
 
 import psutil
 import wiotp.sdk.gateway
-
+from mqttHandler import publishData
 ANDROID_DEVICE_TYPE = "Android"
 
 
@@ -18,6 +18,8 @@ def send_status_event(client):
         "cpu": psutil.cpu_percent(),
         "memory": psutil.virtual_memory().percent
     }
+    publishData('iot-2/type/ANDROID_DEVICE_TYPE/id/0/evt/status/fmt/cpu',str(psutil.cpu_percent()))
+    publishData('iot-2/type/ANDROID_DEVICE_TYPE/id/0/evt/status/fmt/memory',str(psutil.virtual_memory().percent))
     client.publishEvent(eventId="status", msgFormat="json", data=payload, qos=1)
 
 

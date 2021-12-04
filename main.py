@@ -1,10 +1,12 @@
 from datetime import timedelta
 import time
+from mqttHandler import *
 
 from timeloop import Timeloop
 
 from gateway_client import get_gateway_cilent, send_status_event, send_android_device_event
 from udp_listener import listen_sensor_data
+
 
 
 client = get_gateway_cilent('gateway_config.yml')
@@ -24,6 +26,12 @@ def send_gateway_status():
 def send_device_readings():
     for device_addr, data in devices_data.items():
         send_android_device_event(client, device_addr, "status", data)
+        ##{'x_acc': -0.003208909183740616, 'y_acc': -0.006447315216064453, 'z_acc': 0.01796436309814453, 'x_gravity': 0.0, 'y_gravity': 0.0, 'z_gravity': 0.0, 'x_rotation': 0.0, 'y_rotation': 0.0, 'z_rotation': 0.0, 'x_orientation': 0.0, 'y_orientation': 0.0, 'z_orientation': 0.0, 'deprecated_1': 0.0, 'deprecated_2': 0.0, 'ambient_light': 56.0, 'proximity': 100.0, 'keyboard_button_pressed': 0.0}
+        acc_data="X: "+data['x_acc']+",Y: "+data['y_acc']+",Z: "+data['z_acc']
+        publishData('iot-2/type/ANDROID_DEVICE_TYPE/id/0/evt/status/fmt/acc',acc_data)
+        publishData('iot-2/type/ANDROID_DEVICE_TYPE/id/0/evt/status/fmt/proximity',data['proximity'])
+        
+        
     devices_data.clear()
 
 
@@ -51,3 +59,4 @@ client.commandCallback = gateway_command_callback
 
 for data, device_addr in listen_sensor_data():
     devices_data[device_addr[0]] = data
+
