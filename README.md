@@ -20,11 +20,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Nauman3S/iot-starter-android">
+  <a href="https://github.com/Nauman3S/DoorMonitoringSystem">
     <img src="images/door-m-logo.png" alt="Logo" width="200" height="200">
   </a>
 
-  <h3 align="center">IoT Starter for Android</h3>
+  <h3 align="center">Door Monitoring System</h3>
 
   <p align="center">
     This is an IoT starter project to send phone's accelerometer data to NodeRED over MQTT.
@@ -85,7 +85,7 @@ Once you run this project succesfully, you will be able to implement same set of
 
 ### Built With
 
-IoT Starter is built with
+This project is built with
 
 * [Android Studio](https://developer.android.com/studio)
 * [NodeRED](https://nodered.org/)
@@ -106,16 +106,37 @@ This section provides a set of instructions on how to run this project.
 
 This is a list things you need have.
 
-* Android Studio(optional)
+* Android Smartphone
 * IBM Cloud Account
+* Raspberry Pi(or any linux machine)
 
-### Installation
+### Configuration of Raspberry Pi Gateway Program
 
-1. Compile the andorid app or use APK file and install it on your smartphone.
+
+Install the requirements using pip,
+
+```sh
+$ pip install -r requirements.txt
+```
+
+#### Gateway layer
+
+- `gateway_client.py`: Contains code for the gateway client.
+- `udp_listener.py`: The code for receiving and parsing [SensorUDP](https://github.com/Nauman3S/DoorMonitoringSystem/blob/main/android_app_sensor_udp/sensor-udp.apk) data sent by the Android device over sockets.
+- `main.py`: The script that is supposed to run on raspberry pi as per the tutorial. It uses` gateway_client` and `udp_listener` internally.
+- `gateway_config.yml`: This configuration file needs to created by you. Please refer to the tutorial to understand what it should contain.
+
+#### Application layer
+
+- `application.py`: Contains code for the application. The config for this can be provided by creating a file called `app_config.yml` in the same directory. Please refer to the tutorial to understand what this file should contain.
+- 
+### Configurations of Cloud and Smartphone
+
+1. Install the app in android_app_sensor_upd folder on your smartphone.
 2. Make a Classic Ubuntu Server 20.04 instance in your IBM Cloud account and install mosquitto broker on it.
 3. Install NodeRED in your IBM Cloud Account
 4. Install node-red-dashboard in your NodeRED instance.
-5. Import the flow from NodeREDDashboard folder of this repository into your NodeRED dashboard.
+5. Import the flow from NodeRED_Dashboard folder of this repository into your NodeRED dashboard.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -137,7 +158,6 @@ You can visulaize the data on the NodeRED dashboard ui page usually at the addre
 
 - [x] Add Android App
 - [ ] Add iOS App
-- [ ] Add a standalone hardware example.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -173,23 +193,23 @@ Distributed under the Eclipse Public License 1.0 License. See `LICENSE` for more
 
 NaumanShakir - [NaumanShakir.com](https://NaumanShakir) - [@Nauman3S](https://twitter.com/Nauman3S) - NaumanShakir3s@gmail.com
 
-Project Link: [https://github.com/Nauman3S/iot-starter-android](https://github.com/Nauman3S/iot-starter-android)
+Project Link: [https://github.com/Nauman3S/DoorMonitoringSystem](https://github.com/Nauman3S/DoorMonitoringSystem)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Nauman3S/iot-starter-android
-[contributors-url]: https://github.com/Nauman3S/iot-starter-android/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Nauman3S/iot-starter-android
-[forks-url]: https://github.com/Nauman3S/iot-starter-android/network/members
-[stars-shield]: https://img.shields.io/github/stars/Nauman3S/iot-starter-android
-[stars-url]: https://github.com/Nauman3S/iot-starter-android/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Nauman3S/iot-starter-android
-[issues-url]: https://github.com/Nauman3S/iot-starter-android/issues
-[license-shield]: https://img.shields.io/github/license/Nauman3S/iot-starter-android
-[license-url]: https://github.com/Nauman3S/iot-starter-android/blob/main/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/Nauman3S/DoorMonitoringSystem
+[contributors-url]: https://github.com/Nauman3S/DoorMonitoringSystem/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Nauman3S/DoorMonitoringSystem
+[forks-url]: https://github.com/Nauman3S/DoorMonitoringSystem/network/members
+[stars-shield]: https://img.shields.io/github/stars/Nauman3S/DoorMonitoringSystem
+[stars-url]: https://github.com/Nauman3S/DoorMonitoringSystem/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Nauman3S/DoorMonitoringSystem
+[issues-url]: https://github.com/Nauman3S/DoorMonitoringSystem/issues
+[license-shield]: https://img.shields.io/github/license/Nauman3S/DoorMonitoringSystem
+[license-url]: https://github.com/Nauman3S/DoorMonitoringSystem/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/naumanshakir3s
 [product-screenshot]: images/scr17.png
