@@ -107,7 +107,7 @@ This section provides a set of instructions on how to run this project.
 This is a list things you need have.
 
 * Android Smartphone
-* IBM Cloud Account
+* IBM Cloud/AWS Account(for getting a Ubuntu Server 20.04 instance)
 * Raspberry Pi(or any linux machine)
 
 ### Configuration of Raspberry Pi Gateway Program
@@ -139,6 +139,33 @@ $ pip install -r requirements.txt
 5. Import the flow from NodeRED_Dashboard folder of this repository into your NodeRED dashboard.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+### Configuration mosquitto on Ubuntu Server 20.04
+
+SSH into your server and execute the following commands to install Mosquitto Broker.
+
+```shell
+sudo apt update
+sudo apt upgrade
+sudo apt install mosquitto -y
+sudo apt-get install mosquitto-clients
+sudo apt clean
+sudo service mosquitto stop
+sudo nano /etc/mosquitto/mosquitto.conf
+sudo apt install ufw
+sudo ufw allow 1883
+sudo ufw allow 22
+sudo ufw enable
+```
+
+Then in the file add these two lines
+listener 1883
+allow_anonymous true
+and press CTRL+O and CTRL+X to save and exit the file.
+sudo service mosquitto start
+mosquitto -v
+
+Now you have a Mosquitto Broker running on the port 1883 with the address which is the public IP address of your server.
 
 
 
