@@ -144,7 +144,7 @@ $ pip install -r requirements.txt
 
 SSH into your server and execute the following commands to install Mosquitto Broker.
 
-```shell
+```sh
 sudo apt update
 sudo apt upgrade
 sudo apt install mosquitto -y
@@ -159,15 +159,21 @@ sudo ufw enable
 ```
 
 Then in the file add these two lines
+
+```
 listener 1883
 allow_anonymous true
+```
+
 and press CTRL+O and CTRL+X to save and exit the file.
+```sh
 sudo service mosquitto start
 mosquitto -v
+```
 
 Now you have a Mosquitto Broker running on the port 1883 with the address which is the public IP address of your server.
 
-
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
