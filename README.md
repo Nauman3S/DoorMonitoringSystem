@@ -123,6 +123,9 @@ $ wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts
 
 ```
 
+### Circuit Diagram
+![NodeRED Dashboard](Circuit/Circuit_bb.png)
+
 #### Gateway layer
 
 - `gateway_client.py`: Contains code for the gateway client.
