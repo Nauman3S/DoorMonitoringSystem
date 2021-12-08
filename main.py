@@ -1,7 +1,7 @@
 from datetime import timedelta
 import time
 from mqttHandler import *
-
+from dht11Handler import *
 from timeloop import Timeloop
 
 from gateway_client import get_gateway_cilent, send_status_event, send_android_device_event
@@ -32,6 +32,7 @@ def send_device_readings():
         acc_data="X: "+data['x_acc']+",Y: "+data['y_acc']+",Z: "+data['z_acc']
         publishData('iot-2/type/ANDROID_DEVICE_TYPE/id/0/evt/status/fmt/acc',acc_data)
         publishData('iot-2/type/ANDROID_DEVICE_TYPE/id/0/evt/status/fmt/proximity',data['proximity'])
+        publishData('iot-2/type/DHT11/id/0/evt/status/fmt/tempHumdi',getTempHumidity())
         
         
     devices_data.clear()

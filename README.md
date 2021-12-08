@@ -113,10 +113,14 @@ This is a list things you need have.
 ### Configuration of Raspberry Pi Gateway Program
 
 
-Install the requirements using pip,
+Run the following commands
 
 ```sh
 $ pip install -r requirements.txt
+$ sudo pip3 install --upgrade adafruit-python-shell
+$ sudo apt-get install libgpiod2
+$ wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py
+
 ```
 
 #### Gateway layer

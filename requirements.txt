@@ -2,3 +2,4 @@ paho-mqtt
 wiotp-sdk
 psutil
 timeloop
+adafruit-circuitpython-dht
